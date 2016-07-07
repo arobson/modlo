@@ -169,4 +169,25 @@ describe( "Loader", function() {
 			fount.purgeAll();
 		} );
 	} );
+
+	describe( "when patterns array is missing or empty", function() {
+		var result, loader;
+		before( function() {
+			loader = modlo();
+			return loader.load( {
+				fount: fount, 
+				patterns: []
+			} ).then( function( x ) {
+				result = x;
+			} );
+		} );
+
+		it( "should result in an empty list", function() {
+			result.loaded.should.eql( [] );
+		} );
+
+		after( function() {
+			fount.purgeAll();
+		} );
+	} );
 } );

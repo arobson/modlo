@@ -7,13 +7,17 @@ var getArguments = utility.getArguments;
 
 // returns a list of files from a given parent directory
 function getModuleList( patterns ) {
-	return when.all( glob( "./", patterns, [ ".git", "node_modules" ] ) )
-		.then( function( collections ) {
-			var list = _.filter( _.flatten( collections ) );
-			return _.map( list, function( modulePath ) {
-				return { path: modulePath, name: undefined };
+	if( patterns && patterns.length ) {
+		return when.all( glob( "./", patterns, [ ".git", "node_modules" ] ) )
+			.then( function( collections ) {
+				var list = _.filter( _.flatten( collections ) );
+				return _.map( list, function( modulePath ) {
+					return { path: modulePath, name: undefined };
+				} );
 			} );
-		} );
+	} else {
+		return when( [] );
+	}
 }
 
 // loads internal resources, resources from config path and node module resources

@@ -103,8 +103,10 @@ __config hash format__
 
 __result hash format__
 ```js
+{
 	loaded: [], // the list of keys registered with fount
 	fount: instance // the fount instance used for registration
+}
 ```
 
 #### example - no defaults during init

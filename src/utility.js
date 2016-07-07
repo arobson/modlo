@@ -1,5 +1,5 @@
 var _ = require( "lodash" );
-var argumentRegex = /^(function\s*\w*\s*)?[(](.*)[)]\s*(=>)?\s*[{]/;
+var argumentRegex = /^(function\s*\w*\s*)?[(]?([^()=>]*)[)]?\s*(=>)?\s*[{]/;
 
 function getContainer( state, configuration ) {
 	return configuration.fount || state.fount;
